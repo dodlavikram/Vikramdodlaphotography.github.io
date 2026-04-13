@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikram Dodla Photography - Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:wght@400;500;600&display=swap');
+
+        :root {
+            --primary: #1a1a1a;
+            --accent-1: #a89968;
+            --accent-2: #2c2c2c;
+            --accent-3: #8b7d6b;
+            --light: #f5f5f5;
+            --dark: #0d0d0d;
+            --gold: #a89968;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background: #fafaf8;
+            color: #2c2c2c;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: rgba(250, 250, 248, 0.98);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(168, 153, 104, 0.15);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #2c2c2c;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+            background: linear-gradient(135deg, #fafaf8 0%, #f5f3f0 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 153, 104, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 125, 107, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            color: #2c2c2c;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #6b6b6b;
+            margin-bottom: 3rem;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--gold);
+            color: #fafaf8;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-family: 'Lora', serif;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #8b7d6b;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        /* PORTFOLIO SECTION */
+        .portfolio {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fafaf8;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            color: #2c2c2c;
+        }
+
+        .section-subtitle {
+            color: #6b6b6b;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-container {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .gallery-category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 3rem 0 2rem 0;
+            color: var(--gold);
+            border-bottom: 2px solid rgba(168, 153, 104, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        /* MASONRY LAYOUT */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease-out both;
+            background: #f0f0f0;
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08) rotate(1deg);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(168, 153, 104, 0.85) 0%, rgba(139, 125, 107, 0.85) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 10;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-info {
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-info {
+            transform: translateY(0);
+        }
+
+        .gallery-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #fafaf8;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-category {
+            font-size: 0.75rem;
+            color: rgba(250, 250, 248, 0.8);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(168, 153, 104, 0.08) 0%, rgba(139, 125, 107, 0.05) 100%);
+            margin: 4rem 0;
+        }
+
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: #2c2c2c;
+        }
+
+        .about-text p {
+            color: #6b6b6b;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .about-image {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--gold), #8b7d6b);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(250,250,248,0.3);
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            padding: 6rem 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fafaf8;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+        }
+
+        .contact p {
+            color: #6b6b6b;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            background: rgba(168, 153, 104, 0.05);
+            border: 1px solid rgba(168, 153, 104, 0.3);
+            color: #2c2c2c;
+            font-family: 'Lora', serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(168, 153, 104, 0.08);
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(168, 153, 104, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            padding: 1rem 3rem;
+            background: var(--gold);
+            color: #fafaf8;
+            border: none;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Lora', serif;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #8b7d6b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(168, 153, 104, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(168, 153, 104, 0.2);
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            background: #fafaf8;
+        }
+
+        /* ANIMATIONS */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.75rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-text h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span style="font-size: 1.4rem;">📸</span>
+                <span>VIKRAM DODLA</span>
+            </div>
+            <ul>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                VISUAL POETRY
+                <span>IN EVERY FRAME</span>
+            </h1>
+            <p>Capturing authentic moments with bold artistic vision</p>
+            <a href="#portfolio" class="cta-button">Explore Portfolio</a>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title">Featured Work</h2>
+        <p class="section-subtitle">Professional Photography Across Multiple Genres</p>
+
+        <div class="gallery-container">
+            <!-- WEDDINGS -->
+            <h3 class="gallery-category-title">WEDDINGS</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01488" alt="Wedding Ceremony">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Sacred Vows</div>
+                            <div class="gallery-category">Wedding Ceremony</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01550" alt="Bride & Groom">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Just Married</div>
+                            <div class="gallery-category">Wedding Day</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01650" alt="Ring Exchange">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Ring Exchange</div>
+                            <div class="gallery-category">Wedding Moment</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01750" alt="First Dance">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">First Dance</div>
+                            <div class="gallery-category">Reception</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01850" alt="Family Moments">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Family Joy</div>
+                            <div class="gallery-category">Wedding Celebration</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01950" alt="Ceremony Details">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Sacred Ritual</div>
+                            <div class="gallery-category">Wedding Ceremony</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC02050" alt="Wedding Reception">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Reception Moments</div>
+                            <div class="gallery-category">Wedding Celebration</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC02150" alt="Emotional Moment">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Heartfelt Connection</div>
+                            <div class="gallery-category">Wedding Moment</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BRIDAL PORTRAITS -->
+            <h3 class="gallery-category-title">BRIDAL PORTRAITS</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01362" alt="Bridal Portrait">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Golden Elegance</div>
+                            <div class="gallery-category">Bridal Portrait</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01400" alt="Bride">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Radiant Beauty</div>
+                            <div class="gallery-category">Bridal Portrait</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01430" alt="Traditional Bride">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Traditional Grace</div>
+                            <div class="gallery-category">Bridal Portrait</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01460" alt="Bride Smile">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Happy Bride</div>
+                            <div class="gallery-category">Bridal Portrait</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01480" alt="Bridal Detail">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Details & Jewelry</div>
+                            <div class="gallery-category">Bridal Portrait</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MATERNITY & COUPLES -->
+            <h3 class="gallery-category-title">MATERNITY & COUPLES</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC07153" alt="Maternity">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Expecting Joy</div>
+                            <div class="gallery-category">Maternity</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC07250" alt="Pregnancy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Beautiful Belly</div>
+                            <div class="gallery-category">Maternity</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC07350" alt="Couple Maternity">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Soon to be Three</div>
+                            <div class="gallery-category">Maternity</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC07450" alt="Romantic Couple">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Romantic Connection</div>
+                            <div class="gallery-category">Couples</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC07550" alt="Couple Joy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Pure Love</div>
+                            <div class="gallery-category">Couples</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC07650" alt="Golden Hour Maternity">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Golden Hour Glow</div>
+                            <div class="gallery-category">Maternity</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEWBORN & BABIES -->
+            <h3 class="gallery-category-title">NEWBORN & BABIES</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC00776" alt="Newborn">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">New Arrival</div>
+                            <div class="gallery-category">Newborn</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC00900" alt="Baby">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Pure Innocence</div>
+                            <div class="gallery-category">Baby Portrait</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01000" alt="Monthly Milestone">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Milestone Moment</div>
+                            <div class="gallery-category">Baby Portrait</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01100" alt="Baby Creative">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Creative Concept</div>
+                            <div class="gallery-category">Baby Portrait</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC01200" alt="Baby Growth">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Growing Up</div>
+                            <div class="gallery-category">Baby Monthly Shoot</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NIGHT RECEPTION & EVENTS -->
+            <h3 class="gallery-category-title">NIGHT RECEPTION & EVENTS</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC02748" alt="Night Reception">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Evening Elegance</div>
+                            <div class="gallery-category">Night Reception</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC02800" alt="Celebration">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Festive Moments</div>
+                            <div class="gallery-category">Event</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC02850" alt="Event Lighting">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Ambient Celebration</div>
+                            <div class="gallery-category">Night Event</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC02899" alt="Reception Party">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Celebration Style</div>
+                            <div class="gallery-category">Reception</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRADUATION & PORTRAITS -->
+            <h3 class="gallery-category-title">GRADUATION & PROFESSIONAL PORTRAITS</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC00610" alt="Graduation">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Cap & Gown</div>
+                            <div class="gallery-category">Graduation</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=DSC00645" alt="Graduate Portrait">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Achievement</div>
+                            <div class="gallery-category">Graduation</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=4E6AF6C2-4742-4C3E-A796-B1EAE0ED8837" alt="Professional Portrait">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Professional Edge</div>
+                            <div class="gallery-category">Portrait</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=IMG_8146" alt="Portrait 1">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Studio Portrait</div>
+                            <div class="gallery-category">Professional</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=IMG_8147" alt="Portrait 2">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Character Study</div>
+                            <div class="gallery-category">Portrait</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://drive.google.com/uc?export=view&id=IMG_8163" alt="Portrait 3">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">Timeless Elegance</div>
+                            <div class="gallery-category">Portrait</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>I'm a visual storyteller obsessed with capturing authentic moments that resonate. Every frame is a chance to celebrate love, joy, and the beauty in life's most precious moments.</p>
+                <p>Specializing in weddings, maternity, newborn, and cultural photography, I bring a bold artistic vision and refined aesthetic to every project. My work focuses on emotional depth, professional technical excellence, and creating timeless imagery that families will treasure forever.</p>
+            </div>
+            <div class="about-image">📸</div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <h2>Let's Create Together</h2>
+        <p>Have a project in mind? I'd love to hear from you and bring your vision to life.</p>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Project Type (e.g., Wedding, Maternity, Event)">
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Tell me about your project, vision, and timeline..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 Vikram Dodla Photography. All rights reserved. | Capturing moments, creating memories</p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for reaching out! I will get back to you soon with details about your project.');
+            event.target.reset();
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
