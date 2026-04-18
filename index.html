@@ -679,13 +679,18 @@
       </div>
       <div class="contact-form-wrap">
         <h3>Send an Enquiry</h3>
-        <form class="cf" action="https://vikramdodlaphotography.com.au/contact-us" method="POST">
+        <form class="cf" action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+          <input type="hidden" name="access_key" value="930d84c1-61c0-4d45-a121-0acff86a5d81">
+          <input type="hidden" name="subject" value="New enquiry - Vikram Dodla Photography">
+          <input type="hidden" name="from_name" value="Vikram Dodla Photography Website">
+          <input type="hidden" name="redirect" value="https://vikramdodlaphotography.com.au">
           <input type="text" name="name" placeholder="Your Name" required>
           <input type="email" name="email" placeholder="Your Email" required>
           <input type="text" name="phone" placeholder="Your Phone Number">
           <input type="text" name="project" placeholder="Project Type (e.g. Wedding, Maternity)">
           <textarea name="message" placeholder="Tell me about your vision and timeline..."></textarea>
           <button type="submit" class="cf-btn">Send Message</button>
+          <p id="form-status" style="text-align:center;font-size:0.8rem;margin-top:0.5rem;color:var(--gold);display:none;"></p>
         </form>
       </div>
     </div>
@@ -707,6 +712,38 @@
 </footer>
 
 <script>
+  // Contact form via Web3Forms
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.cf-btn');
+    const status = document.getElementById('form-status');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    const formData = new FormData(this);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST', body: formData
+      });
+      const data = await res.json();
+      if (data.success) {
+        status.textContent = '✓ Message sent! I'll be in touch soon.';
+        status.style.color = 'var(--gold)';
+        status.style.display = 'block';
+        this.reset();
+      } else {
+        status.textContent = 'Something went wrong. Please email me directly.';
+        status.style.color = '#c0392b';
+        status.style.display = 'block';
+      }
+    } catch(err) {
+      status.textContent = 'Something went wrong. Please email me directly.';
+      status.style.color = '#c0392b';
+      status.style.display = 'block';
+    }
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+  });
+
   function openLightbox(id) {
     document.getElementById('lb-' + id).classList.add('open');
     document.body.style.overflow = 'hidden';
